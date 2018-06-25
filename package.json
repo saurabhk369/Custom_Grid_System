@@ -1,0 +1,26 @@
+{
+  "name": "sass-starter-pack",
+  "version": "1.0.0",
+  "description": "Boilerplate for Sass Serve with live gulp server",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp watch",
+    "build": "gulp build",
+    "serve": "gulp serve",
+    "watch": "gulp watch",
+    "clean": "gulp clean"
+  },
+  "author": "Saurabh Kulkarni",
+  "license": "MIT",
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.4",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlclean": "^2.7.22",
+    "gulp-inject": "^4.3.2",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify": "^3.0.0",
+    "gulp-webserver": "^0.9.1"
+  }
+}
