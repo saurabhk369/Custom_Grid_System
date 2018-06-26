@@ -200,18 +200,6 @@ body {
         width: calc(100% - 8em);
         grid-gap: 1rem;
     }
-    @for $i from 1 through $xlarge-columns {
-        .col-xl-#{$i} {
-            grid-column: span $i;
-        }
-    }
-    @for $i from 1 through $xlarge-columns {
-        @for $j from 1 through $xlarge-columns {
-            .col-xl-#{$j}-#{$i} {
-                grid-column: $i / span $j;
-            }
-        }
-    }
 }
 
 // 992px
@@ -224,18 +212,6 @@ body {
         width: calc(100% - 8em);
         grid-gap: 1rem;
     }
-    @for $i from 1 through $xlarge-columns {
-        .col-lg-#{$i} {
-            grid-column: span $i;
-        }
-    }
-    @for $i from 1 through $xlarge-columns {
-        @for $j from 1 through $xlarge-columns {
-            .col-lg-#{$j}-#{$i} {
-                grid-column: $i / span $j;
-            }
-        }
-    }
 }
 
 //between 768px and 992px
@@ -247,18 +223,6 @@ body {
         grid-template-columns: repeat($mid-columns, 1fr);
         width: calc(100% - 8em);
         grid-gap: 1rem;
-    }
-    @for $i from 1 through $xlarge-columns {
-        .col-md-#{$i} {
-            grid-column: span $i;
-        }
-    }
-    @for $i from 1 through $xlarge-columns {
-        @for $j from 1 through $xlarge-columns {
-            .col-md-#{$j}-#{$i} {
-                grid-column: $i / span $j;
-            }
-        }
     }
 }
 
@@ -274,18 +238,6 @@ body {
         margin-bottom: 0.5rem;
         grid-gap: 0.6rem;
     }
-    @for $i from 1 through $xlarge-columns {
-        .col-sm-#{$i} {
-            grid-column: span $i;
-        }
-    }
-    @for $i from 1 through $xlarge-columns {
-        @for $j from 1 through $xlarge-columns {
-            .col-sm-#{$j}-#{$i} {
-                grid-column: $i / span $j;
-            }
-        }
-    }
 }
 
 // 480px
@@ -299,11 +251,6 @@ body {
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
         grid-gap: 0.6rem;
-    }
-    @for $i from 1 through $xlarge-columns {
-        .col-xs-#{$i} {
-            grid-column: span $i;
-        }
     }
 }
 
@@ -321,9 +268,17 @@ body {
     .grid-item {
         grid-column: 1;
     }
-    @for $i from 1 through $xlarge-columns {
-        .col-xxs-#{$i} {
-            grid-column: span $i;
+}
+
+@for $i from 1 through $xlarge-columns {
+    .col-#{$i} {
+        grid-column: span $i;
+    }
+}
+@for $i from 1 through $xlarge-columns {
+    @for $j from 1 through $xlarge-columns {
+        .col-#{$j}-#{$i} {
+            grid-column: $i / span $j;
         }
     }
 }
