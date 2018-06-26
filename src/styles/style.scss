@@ -57,6 +57,139 @@ body {
     grid-column-end: -1;
 }
 
+// // 1200px
+// @media (min-width: 75.01em) {
+//     .container {
+//         width: calc(100% - 3rem);
+//     }
+//     .grid {
+//         grid-template-columns: repeat($xlarge-columns, 1fr);
+//         width: calc(100% - 8em);
+//         grid-gap: 1rem;
+//     }
+//     @for $i from 1 through $xlarge-columns {
+//         .col-xl-#{$i} {
+//             grid-column: span $i;
+//         }
+//     }
+//     @for $i from 1 through $xlarge-columns {
+//         @for $j from 1 through $xlarge-columns {
+//             .col-xl-#{$j}-#{$i} {
+//                 grid-column: $i / span $j;
+//             }
+//         }
+//     }
+// }
+
+// // 992px
+// @media (max-width: 75em) {
+//     .container {
+//         width: calc(100% - 3rem);
+//     }
+//     .grid {
+//         grid-template-columns: repeat($large-columns, 1fr);
+//         width: calc(100% - 8em);
+//         grid-gap: 1rem;
+//     }
+//     @for $i from 1 through $large-columns {
+//         .col-lg-#{$i} {
+//             grid-column: span $i;
+//         }
+//     }
+//     @for $i from 1 through $large-columns {
+//         @for $j from 1 through $large-columns {
+//             .col-lg-#{$j}-#{$i} {
+//                 grid-column: $i / span $j;
+//             }
+//         }
+//     }
+// }
+
+// //between 768px and 992px
+// @media (min-width: 48em) and (max-width: 62em) {
+//     .container {
+//         width: calc(100% - 3rem);
+//     }
+//     .grid {
+//         grid-template-columns: repeat($mid-columns, 1fr);
+//         width: calc(100% - 8em);
+//         grid-gap: 1rem;
+//     }
+//     @for $i from 1 through $mid-columns {
+//         .col-md-#{$i} {
+//             grid-column: span $i;
+//         }
+//     }
+//     @for $i from 1 through $mid-columns {
+//         @for $j from 1 through $mid-columns {
+//             .col-md-#{$j}-#{$i} {
+//                 grid-column: $i / span $j;
+//             }
+//         }
+//     }
+// }
+
+// // 768px
+// @media (max-width: 48em) {
+//     .container {
+//         width: calc(100% - 2rem);
+//     }
+//     .grid {
+//         grid-template-columns: repeat($small-columns, 1fr);
+//         width: calc(100% - 4rem);
+//         margin-top: 0.5rem;
+//         margin-bottom: 0.5rem;
+//         grid-gap: 0.6rem;
+//     }
+//     @for $i from 1 through $small-columns {
+//         .col-sm-#{$i} {
+//             grid-column: span $i;
+//         }
+//     }
+//     @for $i from 1 through $small-columns {
+//         @for $j from 1 through $small-columns {
+//             .col-sm-#{$j}-#{$i} {
+//                 grid-column: $i / span $j;
+//             }
+//         }
+//     }
+// }
+
+// // 480px
+// @media (max-width: 30em) {
+//     .container {
+//         width: calc(100% - 2rem);
+//     }
+//     .grid {
+//         grid-template-columns: repeat($xsmall-columns, 1fr);
+//         width: calc(100% - 4rem);
+//         margin-top: 0.5rem;
+//         margin-bottom: 0.5rem;
+//         grid-gap: 0.6rem;
+//     }
+//     @for $i from 1 through $xsmall-columns {
+//         .col-xs-#{$i} {
+//             grid-column: span $i;
+//         }
+//     }
+// }
+
+// // 320px
+// @media (max-width: 20em) {
+//     .container {
+//         width: calc(100%);
+//     }
+//     .grid {
+//         grid-template-columns: 1fr;
+//         width: calc(100% - 1rem);
+//         margin-top: 0.5rem;
+//         grid-gap: 0.3rem;
+//     }
+//     .grid-item {
+//         grid-column: 1;
+//     }
+// }
+
 // 1200px
 @media (min-width: 75.01em) {
     .container {
@@ -91,13 +224,13 @@ body {
         width: calc(100% - 8em);
         grid-gap: 1rem;
     }
-    @for $i from 1 through $large-columns {
+    @for $i from 1 through $xlarge-columns {
         .col-lg-#{$i} {
             grid-column: span $i;
         }
     }
-    @for $i from 1 through $large-columns {
-        @for $j from 1 through $large-columns {
+    @for $i from 1 through $xlarge-columns {
+        @for $j from 1 through $xlarge-columns {
             .col-lg-#{$j}-#{$i} {
                 grid-column: $i / span $j;
             }
@@ -115,13 +248,13 @@ body {
         width: calc(100% - 8em);
         grid-gap: 1rem;
     }
-    @for $i from 1 through $mid-columns {
+    @for $i from 1 through $xlarge-columns {
         .col-md-#{$i} {
             grid-column: span $i;
         }
     }
-    @for $i from 1 through $mid-columns {
-        @for $j from 1 through $mid-columns {
+    @for $i from 1 through $xlarge-columns {
+        @for $j from 1 through $xlarge-columns {
             .col-md-#{$j}-#{$i} {
                 grid-column: $i / span $j;
             }
@@ -141,13 +274,13 @@ body {
         margin-bottom: 0.5rem;
         grid-gap: 0.6rem;
     }
-    @for $i from 1 through $small-columns {
+    @for $i from 1 through $xlarge-columns {
         .col-sm-#{$i} {
             grid-column: span $i;
         }
     }
-    @for $i from 1 through $small-columns {
-        @for $j from 1 through $small-columns {
+    @for $i from 1 through $xlarge-columns {
+        @for $j from 1 through $xlarge-columns {
             .col-sm-#{$j}-#{$i} {
                 grid-column: $i / span $j;
             }
@@ -167,7 +300,7 @@ body {
         margin-bottom: 0.5rem;
         grid-gap: 0.6rem;
     }
-    @for $i from 1 through $xsmall-columns {
+    @for $i from 1 through $xlarge-columns {
         .col-xs-#{$i} {
             grid-column: span $i;
         }
@@ -188,12 +321,39 @@ body {
     .grid-item {
         grid-column: 1;
     }
+    @for $i from 1 through $xlarge-columns {
+        .col-xxs-#{$i} {
+            grid-column: span $i;
+        }
+    }
+}
+
+@for $i from 1 through 16 {
+    .grid-#{$i} {
+        @extend .grid;
+        grid-template-columns: repeat($i, 1fr);
+    }
+}
+
+.grid-flow-row {
+    grid-auto-flow: row;
+}
+
+.grid-flow-column {
+    grid-auto-flow: column;
+}
+
+.no-gutter {
+    @extend .grid;
+    grid-gap: 0em;
 }
 
 .fill {
     // @extend .grid;
     width: 100%;
     height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .default {

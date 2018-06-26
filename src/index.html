@@ -9,8 +9,8 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="grid fill">
+  <div class="container fill">
+    <div class="grid grid-flow-row no-gutter fill">
       <div class="grid-item default">1</div>
       <div class="grid-item primary">2</div>
       <div class="grid-item success">3</div>
@@ -25,7 +25,12 @@
       <div class="grid-item light">12</div>
       <div class="grid-item dark">13</div>
       <div class="grid-item danger">14</div>
-      <div class="grid-item-end default">15</div>
+      <div class="grid-item grid-flow-column col-md-2 grid-5 no-gutter fill dark" style="grid-template-rows: 100px 100px; grid-column-start: 3; grid-row: 2">
+        <div class="grid-item col-xxs-2 col-xs-2 col-sm-2 col-md-2 default">1</div>
+        <div class="grid-item col-xxs-2 col-xs-2 col-sm-2 col-md-2 primary">2</div>
+        <div class="grid-item col-xxs-2 col-xs-2 col-sm-2 col-md-2 success">3</div>
+        <div class="grid-item col-xxs-2 col-xs-2 col-sm-2 col-md-2 info">4</div>
+      </div>
       <div class="grid-item primary col-xl-8 col-lg-6-2 
                   col-md-4-2 col-sm-2-3 col-xs-2">16</div>
     </div>
