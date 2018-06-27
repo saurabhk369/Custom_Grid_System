@@ -77,6 +77,11 @@ body {
         }
     }
     @for $i from 1 through $xlarge-columns {
+        .grid-xl-#{$i} {
+            grid-template-columns: repeat($i, 1fr);
+        }
+    }
+    @for $i from 1 through $xlarge-columns {
         @for $j from 1 through $xlarge-columns {
             .col-xl-#{$j}-#{$i} {
                 grid-column: $i / span $j;
@@ -104,6 +109,11 @@ body {
     @for $i from 1 through $large-columns {
         .col-lg-#{$i} {
             grid-column: span $i;
+        }
+    }
+    @for $i from 1 through $xlarge-columns {
+        .grid-lg-#{$i} {
+            grid-template-columns: repeat($i, 1fr);
         }
     }
     @for $i from 1 through $large-columns {
@@ -134,6 +144,11 @@ body {
     @for $i from 1 through $mid-columns {
         .col-md-#{$i} {
             grid-column: span $i;
+        }
+    }
+    @for $i from 1 through $xlarge-columns {
+        .grid-md-#{$i} {
+            grid-template-columns: repeat($i, 1fr);
         }
     }
     @for $i from 1 through $mid-columns {
@@ -168,6 +183,11 @@ body {
             grid-column: span $i;
         }
     }
+    @for $i from 1 through $xlarge-columns {
+        .grid-sm-#{$i} {
+            grid-template-columns: repeat($i, 1fr);
+        }
+    }
     @for $i from 1 through $small-columns {
         @for $j from 1 through $small-columns {
             .col-sm-#{$j}-#{$i} {
@@ -195,6 +215,11 @@ body {
         margin-bottom: 0.5rem;
         grid-gap: 0.6rem;
     }
+    @for $i from 1 through $xlarge-columns {
+        .grid-xs-#{$i} {
+            grid-template-columns: repeat($i, 1fr);
+        }
+    }
     @for $i from 1 through $xsmall-columns {
         .col-xs-#{$i} {
             grid-column: span $i;
@@ -219,6 +244,11 @@ body {
         margin-top: 0.5rem;
         grid-gap: 0.3rem;
     }
+    @for $i from 1 through $xlarge-columns {
+        .grid-xxs-#{$i} {
+            grid-template-columns: repeat($i, 1fr);
+        }
+    }
     .grid-item {
         grid-column: 1;
     }
@@ -230,89 +260,12 @@ body {
     }
 }
 
-// // 1200px
-// @media (min-width: 75.01em) {
-//     .container {
-//         width: calc(100% - 3rem);
-//     }
-//     .grid {
-//         grid-template-columns: repeat($xlarge-columns, 1fr);
-//         width: calc(100% - 8em);
-//         grid-gap: 1rem;
-//     }
-// }
-
-// // 992px
-// @media (max-width: 75em) {
-//     .container {
-//         width: calc(100% - 3rem);
-//     }
-//     .grid {
-//         grid-template-columns: repeat($large-columns, 1fr);
-//         width: calc(100% - 8em);
-//         grid-gap: 1rem;
-//     }
-// }
-
-// //between 768px and 992px
-// @media (min-width: 48em) and (max-width: 62em) {
-//     .container {
-//         width: calc(100% - 3rem);
-//     }
-//     .grid {
-//         grid-template-columns: repeat($mid-columns, 1fr);
-//         width: calc(100% - 8em);
-//         grid-gap: 1rem;
-//     }
-// }
-
-// // 768px
-// @media (max-width: 48em) {
-//     .container {
-//         width: calc(100% - 2rem);
-//     }
-//     .grid {
-//         grid-template-columns: repeat($small-columns, 1fr);
-//         width: calc(100% - 4rem);
-//         margin-top: 0.5rem;
-//         margin-bottom: 0.5rem;
-//         grid-gap: 0.6rem;
-//     }
-// }
-
-// // 480px
-// @media (max-width: 30em) {
-//     .container {
-//         width: calc(100% - 2rem);
-//     }
-//     .grid {
-//         grid-template-columns: repeat($xsmall-columns, 1fr);
-//         width: calc(100% - 4rem);
-//         margin-top: 0.5rem;
-//         margin-bottom: 0.5rem;
-//         grid-gap: 0.6rem;
-//     }
-// }
-
-// // 320px
-// @media (max-width: 20em) {
-//     .container {
-//         width: calc(100%);
-//     }
-//     .grid {
-//         grid-template-columns: 1fr;
-//         width: calc(100% - 1rem);
-//         margin-top: 0.5rem;
-//         grid-gap: 0.3rem;
-//     }
-//     .grid-item {
-//         grid-column: 1;
-//     }
-// }
-
 @for $i from 1 through $xlarge-columns {
     .col-#{$i} {
         grid-column: span $i;
+    }
+    .col-start-#{$i} {
+        grid-column-start: $i;
     }
 }
 @for $i from 1 through $xlarge-columns {
@@ -324,30 +277,30 @@ body {
 }
 
 @for $i from 1 through $xlarge-columns {
-    .grid-xxs-#{$i} {
-        @extend .grid;
-        grid-template-columns: repeat($i, 1fr);
-    }
-    .grid-xs-#{$i} {
-        @extend .grid;
-        grid-template-columns: repeat($i, 1fr);
-    }
-    .grid-sm-#{$i} {
-        @extend .grid;
-        grid-template-columns: repeat($i, 1fr);
-    }
-    .grid-md-#{$i} {
-        @extend .grid;
-        grid-template-columns: repeat($i, 1fr);
-    }
-    .grid-lg-#{$i} {
-        @extend .grid;
-        grid-template-columns: repeat($i, 1fr);
-    }
-    .grid-xl-#{$i} {
-        @extend .grid;
-        grid-template-columns: repeat($i, 1fr);
-    }
+//     .grid-xxs-#{$i} {
+//         @extend .grid;
+//         grid-template-columns: repeat($i, 1fr);
+//     }
+//     .grid-xs-#{$i} {
+//         @extend .grid;
+//         grid-template-columns: repeat($i, 1fr);
+//     }
+//     .grid-sm-#{$i} {
+//         @extend .grid;
+//         grid-template-columns: repeat($i, 1fr);
+//     }
+//     .grid-md-#{$i} {
+//         @extend .grid;
+//         grid-template-columns: repeat($i, 1fr);
+//     }
+//     .grid-lg-#{$i} {
+//         @extend .grid;
+//         grid-template-columns: repeat($i, 1fr);
+//     }
+//     .grid-xl-#{$i} {
+//         @extend .grid;
+//         grid-template-columns: repeat($i, 1fr);
+//     }
     .grid-#{$i} {
         @extend .grid;
         grid-template-columns: repeat($i, 1fr);
