@@ -13,7 +13,8 @@ $mid-columns: 8;
 $small-columns: 6;
 $xsmall-columns: 2;
 $xxsmall-columns: 1;
-html {
+html,
+body {
     box-sizing: border-box;
     height: 100%;
 }
@@ -30,14 +31,16 @@ body {
     background: $base;
     font-family: sans-serif;
 }
+
 .container {
     background: $container;
     width: calc(100% - 5rem);
     margin: 0 auto;
     padding: 1rem;
+    height: auto;
 }
 
-*[class*="visible"]{
+*[class*="visible"] {
     display: none;
 }
 
@@ -88,10 +91,10 @@ body {
             }
         }
     }
-    .hidden-xl{
+    .hidden-xl {
         display: none;
     }
-    .visible-xl{
+    .visible-xl {
         display: inherit;
     }
 }
@@ -123,10 +126,10 @@ body {
             }
         }
     }
-    .hidden-lg{
+    .hidden-lg {
         display: none;
     }
-    .visible-lg{
+    .visible-lg {
         display: inherit;
     }
 }
@@ -158,10 +161,10 @@ body {
             }
         }
     }
-    .hidden-md{
+    .hidden-md {
         display: none;
     }
-    .visible-md{
+    .visible-md {
         display: inherit;
     }
 }
@@ -195,10 +198,10 @@ body {
             }
         }
     }
-    .hidden-sm{
+    .hidden-sm {
         display: none;
     }
-    .visible-sm{
+    .visible-sm {
         display: inherit;
     }
 }
@@ -225,10 +228,10 @@ body {
             grid-column: span $i;
         }
     }
-    .hidden-xs{
+    .hidden-xs {
         display: none;
     }
-    .visible-xs{
+    .visible-xs {
         display: inherit;
     }
 }
@@ -252,10 +255,10 @@ body {
     .grid-item {
         grid-column: 1;
     }
-    .hidden-xxs{
+    .hidden-xxs {
         display: none;
     }
-    .visible-xxs{
+    .visible-xxs {
         display: inherit;
     }
 }
@@ -268,6 +271,7 @@ body {
         grid-column-start: $i;
     }
 }
+
 @for $i from 1 through $xlarge-columns {
     @for $j from 1 through $xlarge-columns {
         .col-#{$j}-#{$i} {
@@ -277,30 +281,30 @@ body {
 }
 
 @for $i from 1 through $xlarge-columns {
-//     .grid-xxs-#{$i} {
-//         @extend .grid;
-//         grid-template-columns: repeat($i, 1fr);
-//     }
-//     .grid-xs-#{$i} {
-//         @extend .grid;
-//         grid-template-columns: repeat($i, 1fr);
-//     }
-//     .grid-sm-#{$i} {
-//         @extend .grid;
-//         grid-template-columns: repeat($i, 1fr);
-//     }
-//     .grid-md-#{$i} {
-//         @extend .grid;
-//         grid-template-columns: repeat($i, 1fr);
-//     }
-//     .grid-lg-#{$i} {
-//         @extend .grid;
-//         grid-template-columns: repeat($i, 1fr);
-//     }
-//     .grid-xl-#{$i} {
-//         @extend .grid;
-//         grid-template-columns: repeat($i, 1fr);
-//     }
+    //     .grid-xxs-#{$i} {
+    //         @extend .grid;
+    //         grid-template-columns: repeat($i, 1fr);
+    //     }
+    //     .grid-xs-#{$i} {
+    //         @extend .grid;
+    //         grid-template-columns: repeat($i, 1fr);
+    //     }
+    //     .grid-sm-#{$i} {
+    //         @extend .grid;
+    //         grid-template-columns: repeat($i, 1fr);
+    //     }
+    //     .grid-md-#{$i} {
+    //         @extend .grid;
+    //         grid-template-columns: repeat($i, 1fr);
+    //     }
+    //     .grid-lg-#{$i} {
+    //         @extend .grid;
+    //         grid-template-columns: repeat($i, 1fr);
+    //     }
+    //     .grid-xl-#{$i} {
+    //         @extend .grid;
+    //         grid-template-columns: repeat($i, 1fr);
+    //     }
     .grid-#{$i} {
         @extend .grid;
         grid-template-columns: repeat($i, 1fr);
@@ -365,7 +369,7 @@ body {
     position: absolute;
     // left: 50%;
     top: 100%;
-    transform: rotateZ(45deg) translateX(0.5rem) ;
+    transform: rotateZ(45deg) translateX(0.5rem);
     color: black;
     background: white;
     width: 1rem;
@@ -384,4 +388,33 @@ body {
     padding: 0.2rem;
     border-radius: 0.1rem;
     box-shadow: 0 0.2rem 0.1rem 0.1rem $dark;
+}
+
+.top {
+    display: flex;
+    align-items: flex-start;
+}
+
+.middle {
+    display: flex;
+    align-items: center;
+}
+
+.bottom {
+    display: flex;
+    align-items: flex-end;
+}
+
+.left {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+.right {
+    margin-right: 0;
+    margin-left: auto;
 }
