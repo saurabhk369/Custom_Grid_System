@@ -1,7 +1,9 @@
+/***** Variables *****/
+
 $base: #FFFFFF;
 $container: #DADADA;
 $light: lighten($container, 5%);
-$dark: darken($container, 5%);
+$dark: darken($container, 50%);
 $default: #BCBABE;
 $primary: #375E97;
 $danger: #FB6542;
@@ -13,6 +15,18 @@ $mid-columns: 8;
 $small-columns: 6;
 $xsmall-columns: 2;
 $xxsmall-columns: 1;
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,700,700i');
+
+/***** basic Styles *****/
+
+:focus {
+    outline: none;
+}
+
+::-moz-focus-inner {
+    border: 0;
+}
+
 html,
 body {
     box-sizing: border-box;
@@ -23,17 +37,15 @@ body {
 *:before,
 *:after {
     box-sizing: inherit;
-    margin: 0;
+    // margin: 0;
     padding: 0;
 }
 
 body {
-    background: $base;
-    font-family: sans-serif;
+    font-family: 'Nunito';
 }
 
 .container {
-    background: $container;
     width: calc(100% - 5rem);
     margin: 0 auto;
     padding: 1rem;
@@ -44,6 +56,9 @@ body {
     display: none;
 }
 
+
+/***** Gird Styles *****/
+
 .grid {
     display: grid;
     grid-template-columns: repeat($large-columns, 1fr);
@@ -53,10 +68,6 @@ body {
     margin: 0 auto;
     margin-top: 1rem;
     margin-bottom: 1rem;
-}
-
-.grid-item {
-    border: 1px solid $primary;
 }
 
 .grid-item-end {
@@ -281,30 +292,6 @@ body {
 }
 
 @for $i from 1 through $xlarge-columns {
-    //     .grid-xxs-#{$i} {
-    //         @extend .grid;
-    //         grid-template-columns: repeat($i, 1fr);
-    //     }
-    //     .grid-xs-#{$i} {
-    //         @extend .grid;
-    //         grid-template-columns: repeat($i, 1fr);
-    //     }
-    //     .grid-sm-#{$i} {
-    //         @extend .grid;
-    //         grid-template-columns: repeat($i, 1fr);
-    //     }
-    //     .grid-md-#{$i} {
-    //         @extend .grid;
-    //         grid-template-columns: repeat($i, 1fr);
-    //     }
-    //     .grid-lg-#{$i} {
-    //         @extend .grid;
-    //         grid-template-columns: repeat($i, 1fr);
-    //     }
-    //     .grid-xl-#{$i} {
-    //         @extend .grid;
-    //         grid-template-columns: repeat($i, 1fr);
-    //     }
     .grid-#{$i} {
         @extend .grid;
         grid-template-columns: repeat($i, 1fr);
@@ -332,63 +319,8 @@ body {
     padding: 0;
 }
 
-.default {
-    background: $default;
-}
 
-.primary {
-    background: $primary;
-}
-
-.info {
-    background: $info;
-}
-
-.success {
-    background: $success;
-}
-
-.danger {
-    background: $danger;
-}
-
-.light {
-    background: $light;
-}
-
-.dark {
-    background: $dark;
-}
-
-.tooltip {
-    position: relative;
-}
-
-.tooltip:hover::before {
-    content: '';
-    position: absolute;
-    // left: 50%;
-    top: 100%;
-    transform: rotateZ(45deg) translateX(0.5rem);
-    color: black;
-    background: white;
-    width: 1rem;
-    height: 1rem;
-}
-
-.tooltip:hover::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    // left: 50%;
-    white-space: normal;
-    top: 100%;
-    transform: translate(-1rem, 0.5rem);
-    background: white;
-    color: black;
-    padding: 0.2rem;
-    border-radius: 0.1rem;
-    box-shadow: 0 0.2rem 0.1rem 0.1rem $dark;
-}
+/***** Alignment Styles *****/
 
 .top {
     display: flex;
@@ -417,4 +349,130 @@ body {
 .right {
     margin-right: 0;
     margin-left: auto;
+}
+
+
+/***** Forms and Features *****/
+
+.tooltip {
+    position: relative;
+}
+
+.tooltip:hover::before {
+    content: '';
+    position: absolute;
+    // left: 50%;
+    top: 100%;
+    transform: rotateZ(45deg) translateX(0.5rem);
+    color: black;
+    background: white;
+    width: 1rem;
+    height: 1rem;
+}
+
+.tooltip:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    white-space: normal;
+    top: 100%;
+    transform: translate(-1rem, 0.5rem);
+    background: white;
+    color: black;
+    padding: 0.2rem;
+    border-radius: 0.1rem;
+    box-shadow: 0 0.2rem 0.1rem 0.1rem $dark;
+}
+
+.rounded {
+    border-radius: 0.5em;
+}
+
+.button {
+    background: $default;
+    padding: 0.5em 0.7em;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.button:hover {
+    box-shadow: 0.1em 0.1em 0.3em 0em $dark;
+    transition: box-shadow 0.2s ease-in-out
+}
+
+.button:active {
+    box-shadow: 0.05em 0.05em 0.2em 0em $dark;
+}
+
+.button-hollow {
+    @extend .button;
+    background: transparent;
+    border: 0.2em solid $default;
+}
+
+.hollow-primary {
+    border-color: $primary;
+}
+
+.hollow-info {
+    border-color: $info;
+}
+
+.hollow-success {
+    border-color: $success;
+}
+
+.hollow-danger {
+    border-color: $danger;
+}
+
+*[class^="button-hollow"]:hover {
+    box-shadow: 0.1em 0.1em 0.3em 0em $dark;
+    transition: box-shadow 0.2s ease-in-out
+}
+
+*[class^="button-hollow"]:active {
+    box-shadow: 0.05em 0.05em 0.2em 0em $dark;
+}
+
+
+/***** Color Styles *****/
+
+.default {
+    background: $default;
+}
+
+.primary {
+    background: $primary;
+    color: $base;
+}
+
+.info {
+    background: $info;
+}
+
+.success {
+    background: $success;
+    color: $base;
+}
+
+.danger {
+    background: $danger;
+    color: $base;
+}
+
+.light {
+    background: $light;
+}
+
+.dark {
+    background: $dark;
+}
+
+.font-light {
+    color: $light;
+}
+
+.font-dark {
+    color: $dark;
 }
