@@ -1,9 +1,35 @@
+/***** Functions *****/
+
+@function str-replace($string, $search, $replace: '') {
+    $index: str-index($string, $search);
+    @if $index {
+        @return str-slice($string, 1, $index - 1)+$replace+str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+    @return $string;
+}
+
+@function url-encode($string) {
+    $map: ( "%": "%25", "<": "%3C", ">": "%3E", " ": "%20", "!": "%21", "*": "%2A", "'": "%27", '"': "%22", "(": "%28", ")": "%29", ";": "%3B", ":": "%3A", "@": "%40", "&": "%26", "=": "%3D", "+": "%2B", "$": "%24", ",": "%2C", "/": "%2F", "?": "%3F", "#": "%23", "[": "%5B", "]": "%5D");
+    $new: $string;
+    @each $search,
+    $replace in $map {
+        $new: str-replace($new, $search, $replace);
+    }
+    @return $new;
+}
+
+@function inline-svg($string) {
+    @return url('data:image/svg+xml;utf8,#{url-encode($string)}');
+}
+
 /***** Variables *****/
 
 $base: #FFFFFF;
 $container: #DADADA;
-$light: lighten($container, 5%);
-$dark: darken($container, 50%);
+$light: lighten($container,
+5%);
+$dark: darken($container,
+50%);
 $default: #BCBABE;
 $primary: #375E97;
 $danger: #FB6542;
@@ -17,7 +43,6 @@ $xsmall-columns: 2;
 $xxsmall-columns: 1;
 $light-blue: #6eb7ff;
 @import url('https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,700,700i');
-
 /***** basic Styles *****/
 
 :focus {
@@ -26,6 +51,7 @@ $light-blue: #6eb7ff;
 
 ::-moz-focus-inner {
     border: 0;
+    outline: none;
 }
 
 html,
@@ -38,7 +64,7 @@ body {
 *:before,
 *:after {
     box-sizing: inherit;
-    font-family: 'Nonito';
+    font-family: 'Nunito';
     padding: 0;
 }
 
@@ -52,7 +78,6 @@ body {
 *[class*="visible"] {
     display: none;
 }
-
 
 /***** Gird Styles *****/
 
@@ -73,7 +98,7 @@ body {
 }
 
 // 1200px
-@media (min-width: 75.01em) {
+@media screen and (min-width: 75.01em) {
     .container {
         width: calc(100% - 3rem);
     }
@@ -108,7 +133,7 @@ body {
 }
 
 // 992px
-@media (max-width: 75em) {
+@media screen and (max-width: 75em) {
     .container {
         width: calc(100% - 3rem);
     }
@@ -143,7 +168,7 @@ body {
 }
 
 //between 768px and 992px
-@media (min-width: 48em) and (max-width: 62em) {
+@media screen and (min-width: 48em) and (max-width: 62em) {
     .container {
         width: calc(100% - 3rem);
     }
@@ -178,7 +203,7 @@ body {
 }
 
 // 768px
-@media (max-width: 48em) {
+@media screen and (max-width: 48em) {
     .container {
         width: calc(100% - 2rem);
     }
@@ -215,7 +240,7 @@ body {
 }
 
 // 480px
-@media (max-width: 30em) {
+@media screen and (max-width: 30em) {
     .container {
         width: calc(100% - 2rem);
     }
@@ -245,7 +270,7 @@ body {
 }
 
 // 320px
-@media (max-width: 20em) {
+@media screen and (max-width: 20em) {
     .container {
         width: calc(100%);
     }
@@ -311,11 +336,9 @@ body {
 .fill {
     // @extend .grid;
     width: 100%;
-    height: 100%;
     margin: 0;
     padding: 0;
 }
-
 
 /***** Alignment Styles *****/
 
@@ -348,7 +371,6 @@ body {
     margin-left: auto;
 }
 
-
 /***** Forms and Features *****/
 
 .tooltip {
@@ -357,8 +379,7 @@ body {
 
 .tooltip:hover::before {
     content: '';
-    position: absolute;
-    // left: 50%;
+    position: absolute; // left: 50%;
     top: 100%;
     transform: rotateZ(45deg) translateX(0.5rem);
     color: black;
@@ -382,6 +403,10 @@ body {
 
 .rounded {
     border-radius: 0.5em;
+}
+
+input, select, textarea, button {
+    margin: 0.2rem;
 }
 
 .button {
@@ -432,18 +457,46 @@ body {
     box-shadow: inset 0.05em 0.05em 0.2em 0em $dark;
 }
 
-.input {
-    padding: 0.3em 0.5em;
+.input,
+select {
+    padding: 0.2em 0.5em;
     font-size: 1.1em;
-    border: 0.1em solid $dark;
-    border-radius: 0.2em;
+    border: 0.05em solid $dark;
+    border-radius: 0.1em;
 }
 
-.input:focus {
+.input:focus, select:focus {
     border-color: $base;
     box-shadow: 0 0 0.2em 0em $light-blue;
 }
 
+input[type="number"] {
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    padding-left: 0.3em;
+    padding-right: 1.6em;
+    appearance: none;
+    position: relative;
+    background-image: inline-svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="'+$dark+'" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/></svg>');
+    background-repeat: no-repeat;
+    background-size: 1.5em 1em;
+    background-position: right center;
+    background-clip: border-box;
+    -moz-background-clip: border-box;
+    -webkit-background-clip: border-box;
+}
 
 /***** Color Styles *****/
 
